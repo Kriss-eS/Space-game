@@ -30,10 +30,10 @@ public class PlayerControls : MonoBehaviour
         {
             Fire(); //v.2
         }
-
-        void Fire() //v.2
-        {
-            Instantiate(bullet, shootPosition.position, transform.rotation); //v.2
-        }
     }
+    void Fire() //v.2
+    {
+        Instantiate(bullet, shootPosition.position, transform.rotation); //v.2
+    }
+
 }

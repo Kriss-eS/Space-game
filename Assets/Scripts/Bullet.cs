@@ -7,7 +7,6 @@ public class Bullet : MonoBehaviour
 
     Rigidbody2D bullet;
     public float BulletSpeed;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -22,12 +21,14 @@ public class Bullet : MonoBehaviour
     {
         
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (bullet.gameObject.CompareTag("Enemy"))
+        foreach (Transform child in collision.transform)
         {
-            Destroy(collision.gameObject);
+            Destroy(child.gameObject);
         }
+
+        Destroy(gameObject);
+
     }
 }
