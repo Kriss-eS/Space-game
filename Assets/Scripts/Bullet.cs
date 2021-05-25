@@ -5,18 +5,14 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
 
-    Rigidbody2D rb;
+    Rigidbody2D bullet;
     public float BulletSpeed;
-
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
 
     // Start is called before the first frame update
     void Start()
     {
-        rb.velocity = transform.up * BulletSpeed;
+        bullet = GetComponent<Rigidbody2D>();
+        bullet.velocity = new Vector2(0, BulletSpeed);
 
         Destroy(gameObject, 3f);
     }
@@ -25,5 +21,13 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (bullet.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(collision.gameObject);
+        }
     }
 }

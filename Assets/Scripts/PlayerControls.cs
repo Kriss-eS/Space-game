@@ -12,15 +12,10 @@ public class PlayerControls : MonoBehaviour
     public GameObject bullet; //v.2
     public Transform shootPosition; //v.2
 
-    private void Awake() //v.1
-    {
-        rb = GetComponent<Rigidbody2D>(); //v.1
-    }
-
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -29,6 +24,7 @@ public class PlayerControls : MonoBehaviour
         xInput = Input.GetAxisRaw("Horizontal"); //v.1
 
         rb.velocity = new Vector2(xInput * speed, rb.velocity.y); //v.1
+
 
         if (Input.GetKeyDown("space")) //v.2
         {
