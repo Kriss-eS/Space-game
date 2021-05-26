@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-
     Rigidbody2D bullet;
     public float BulletSpeed;
     // Start is called before the first frame update
@@ -23,12 +22,6 @@ public class Bullet : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        foreach (Transform child in collision.transform)
-        {
-            Destroy(child.gameObject);
-        }
-
         Destroy(gameObject);
-
     }
 }

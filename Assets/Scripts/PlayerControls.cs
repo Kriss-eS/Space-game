@@ -11,7 +11,6 @@ public class PlayerControls : MonoBehaviour
 
     public GameObject bullet; //v.2
     public Transform shootPosition; //v.2
-
     // Start is called before the first frame update
     void Start()
     {
