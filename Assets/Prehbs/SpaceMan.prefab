@@ -995,6 +995,7 @@ GameObject:
   - component: {fileID: 4207474680404289747}
   - component: {fileID: -687879406575960497}
   - component: {fileID: 3418596348205074502}
+  - component: {fileID: 2120517233216257322}
   m_Layer: 0
   m_Name: SpaceMan
   m_TagString: Enemy
@@ -1056,6 +1057,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeathSprite: {fileID: 7742578212297833387, guid: a5bc267d699603c4e944829d853c9e63, type: 3}
+--- !u!114 &2120517233216257322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4207474680404289748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39a558c3f98917641916764d0baec7e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 2799225719454494299, guid: c56a17c63b7d73047931a30c78f878dc, type: 3}
 --- !u!1 &7951566552037542654
 GameObject:
   m_ObjectHideFlags: 0
