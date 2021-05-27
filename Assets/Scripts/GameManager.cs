@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public GameObject levelWonUI;
+    public static float screenMaxX;
+    public static float screenMinX;
     public void GameOver()
     {
         if (LifeManager.gameOver)
@@ -31,11 +33,19 @@ public class GameManager : MonoBehaviour
         Enemy.enemiesAlive = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+    void setMinMaxX()
+    {
+        Vector2 bottomCorner = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0));
+        Vector2 topCorner = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, 0));
+
+        screenMaxX = topCorner.x;
+        screenMinX = bottomCorner.x;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        setMinMaxX();
     }
 
     // Update is called once per frame

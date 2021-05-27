@@ -13,19 +13,12 @@ public class Bullet : MonoBehaviour
         bullet.velocity = new Vector2(0, BulletSpeed);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.gameObject.CompareTag("Player") && !collision.gameObject.CompareTag("EnemyBullet"))
         {
             Destroy(gameObject);
         }
-
-
     }
     private void OnBecameInvisible()
     {

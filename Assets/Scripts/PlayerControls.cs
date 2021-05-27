@@ -5,12 +5,12 @@ using UnityEngine;
 public class PlayerControls : MonoBehaviour
 {
 
-    Rigidbody2D rb; //v.1
-    float xInput; //v.1
-    public float speed; //v.1
+    Rigidbody2D rb;
+    float xInput;
+    public float speed = 7;
+    public GameObject bullet;
+    public Transform shootPosition;
 
-    public GameObject bullet; //v.2
-    public Transform shootPosition; //v.2
     // Start is called before the first frame update
     void Start()
     {
@@ -20,18 +20,18 @@ public class PlayerControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        xInput = Input.GetAxisRaw("Horizontal"); //v.1
+        xInput = Input.GetAxisRaw("Horizontal");
 
-        rb.velocity = new Vector2(xInput * speed, rb.velocity.y); //v.1
+        rb.velocity = new Vector2(xInput * speed, 0);
 
 
-        if (Input.GetKeyDown("space")) //v.2
+        if (Input.GetKeyDown("space"))
         {
-            Fire(); //v.2
+            FirePlayerBullet();
         }
     }
-    void Fire() //v.2
+    void FirePlayerBullet()
     {
-        Instantiate(bullet, shootPosition.position, transform.rotation); //v.2
+        Instantiate(bullet, shootPosition.position, transform.rotation);
     }
 }

@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    private float maxX = Screen.width;
-    private float minX = -Screen.width;
     public float speed = 2/1000f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        Debug.Log(maxX);
-        Debug.Log(minX);
-    }
 
     // Update is called once per frame
     void Update()
@@ -21,12 +13,12 @@ public class EnemyMovement : MonoBehaviour
 
         transform.position = new Vector2(enemyX, transform.position.y);
 
-        if (transform.position.x > maxX)
+        if (transform.position.x + transform.position.x / 2 >= GameManager.screenMaxX)
         {
             moveDown();
 
         }
-        else if (transform.position.x < minX)
+        else if (transform.position.x + transform.position.x / 2 <= GameManager.screenMinX)
         {
             moveDown();
         }
