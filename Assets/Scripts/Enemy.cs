@@ -5,8 +5,15 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public static int enemiesAlive;
-
     public GameObject DeathSprite;
+    public static float boundsX;
+
+    void Start()
+    {
+        var spriteRenderer = GetComponent<Collider2D>();
+        boundsX = spriteRenderer.bounds.size.x;
+
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Bullet"))
