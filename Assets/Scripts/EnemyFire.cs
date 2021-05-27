@@ -20,10 +20,7 @@ public class EnemyFire : MonoBehaviour
 
     void Fire()
     {
-        Debug.Log("fire");
-
         Instantiate(bullet, new Vector2(transform.position.x, transform.position.y - 0.5f), Quaternion.identity);
-
     }
 
     private void OnBecameVisible()

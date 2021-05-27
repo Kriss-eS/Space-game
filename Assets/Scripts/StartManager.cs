@@ -15,8 +15,8 @@ public class StartManager : MonoBehaviour
         // Vi säger att offset mellan varje enemy ska vara 1.1 i x värdet. 
         var offset = new Vector2(1.1f, 0);
 
-        // totalt 10 enemies
-        Cloner(10, offset);
+        // totalt 11 enemies
+        Cloner(6, offset);
     }
 
     void Cloner(int amount, Vector3 offset)
@@ -39,12 +39,14 @@ public class StartManager : MonoBehaviour
                     // vi kompenserar också offset för när vi senare tar bort SpaceMannen i mitten
                     Instantiate(SpaceMan, gameObject.transform.GetChild(0).transform.position - (offset * i) + offset * 0.5f, Quaternion.identity)
                         .transform.parent = GameObject.Find("EnemyRow").transform;
+                    enemiesSpawned();
                 }
                 // I andra hälften av antalet, spawna SpaceMans åt höger
                 else if (i > amount / 2)
                 {
                     Instantiate(SpaceMan, gameObject.transform.GetChild(0).transform.position + (offset * (i - amount / 2)) - offset * 0.5f, Quaternion.identity)
                         .transform.parent = GameObject.Find("EnemyRow").transform;
+                    enemiesSpawned();
                 }
 
                 // Om vi har nått slutet av loopen, ta bort SpaceMannen i mitten.
@@ -60,6 +62,7 @@ public class StartManager : MonoBehaviour
                 {
                     Instantiate(SpaceMan, gameObject.transform.GetChild(0).transform.position - (offset * i), Quaternion.identity)
                         .transform.parent = GameObject.Find("EnemyRow").transform;
+                    enemiesSpawned();
                 }
                 else if (i > amount / 2)
                 {
@@ -70,10 +73,16 @@ public class StartManager : MonoBehaviour
                     }
                     Instantiate(SpaceMan, gameObject.transform.GetChild(0).transform.position + (offset * (i - amount / 2)), Quaternion.identity)
                         .transform.parent = GameObject.Find("EnemyRow").transform;
+                    enemiesSpawned();
                 }
             }
         }
         
+    }
+
+    public void enemiesSpawned()
+    {
+        Enemy.enemiesAlive++;
     }
 
     // Update is called once per frame

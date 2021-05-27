@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public float maxX = 7;
-    public float minX = -7;
+    private float maxX = Screen.width;
+    private float minX = -Screen.width;
     public float speed = 2/1000f;
     // Start is called before the first frame update
     void Start()
     {
-        
+        Debug.Log(maxX);
+        Debug.Log(minX);
     }
 
     // Update is called once per frame

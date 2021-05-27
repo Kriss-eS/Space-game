@@ -34,5 +34,4 @@ public class PlayerControls : MonoBehaviour
     {
         Instantiate(bullet, shootPosition.position, transform.rotation); //v.2
     }
-
 }

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class LifeManager : MonoBehaviour
 {
-    public int lives = 3;
+    public static int lives = 3;
     public GameObject heart1, heart2, heart3;
-    public bool gameOver;
+    public static bool gameOver;
     // Start is called before the first frame update
     void Start()
     {

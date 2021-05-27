@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public static int enemiesAlive;
+
     public GameObject DeathSprite;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Bullet"))
         {
             Destroy(gameObject);
+            enemiesAlive--;
             // När enemy dör skapas en DeathSprite på positionen av enemy.
             var deathsprite = Instantiate(DeathSprite, gameObject.transform.position, Quaternion.identity);
 
