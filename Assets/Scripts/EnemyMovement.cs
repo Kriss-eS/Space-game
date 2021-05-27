@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    private float maxX;
-    private float minX;
+    private float maxX = Screen.width;
+    private float minX = -Screen.width;
     public float speed = 2/1000f;
     // Start is called before the first frame update
-    void Start()    
+    void Start()
     {
-        Vector2 bottomCorner = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0));
-        Vector2 topCorner = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, 0));
-
-        maxX = topCorner.x;
-        minX = bottomCorner.x;
+        Debug.Log(maxX);
+        Debug.Log(minX);
     }
 
     // Update is called once per frame
@@ -24,12 +21,12 @@ public class EnemyMovement : MonoBehaviour
 
         transform.position = new Vector2(enemyX, transform.position.y);
 
-        if (transform.position.x + transform.position.x/2 >= maxX)
+        if (transform.position.x > maxX)
         {
             moveDown();
 
         }
-        else if (transform.position.x + transform.position.x/2 <= minX)
+        else if (transform.position.x < minX)
         {
             moveDown();
         }
