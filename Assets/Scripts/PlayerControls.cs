@@ -7,9 +7,11 @@ public class PlayerControls : MonoBehaviour
 
     Rigidbody2D rb;
     float xInput;
-    public float speed = 7;
+    public float speed = 5;
     public GameObject bullet;
     public Transform shootPosition;
+    private float nextFire = 0f;
+    public float fireRate = 0.4f;
 
     // Start is called before the first frame update
     void Start()
@@ -25,8 +27,9 @@ public class PlayerControls : MonoBehaviour
         rb.velocity = new Vector2(xInput * speed, 0);
 
 
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown("space") && Time.time > nextFire)
         {
+            nextFire = Time.time + fireRate;
             FirePlayerBullet();
         }
     }

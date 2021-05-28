@@ -6,32 +6,43 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public GameObject levelWonUI;
+    public GameObject gameOver;
     public static float screenMaxX;
     public static float screenMinX;
+    public string nextLevel;
     public void GameOver()
     {
         if (LifeManager.gameOver)
         {
-            Invoke("RestartLevel", 3f);
+            var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject enemy in enemies)
+            {
+                Destroy(enemy);
+            }
+            gameOver.SetActive(true);
+            Invoke("RestartLevel", 4f);
+            
         }
     }
-
     public void WonLevel()
     {
         //Debug.Log(Enemy.enemiesAlive);
-        if (Enemy.enemiesAlive <= 0)
+        if (Enemy.enemiesAlive <= 0 && !LifeManager.gameOver)
         {
             levelWonUI.SetActive(true);
+            Enemy.enemiesAlive = 0;
+            if (Input.GetKeyDown("space"))
+            {
+                SceneManager.LoadScene(nextLevel);
+            }
         }
-        
     }
 
     public void RestartLevel()
     {
         LifeManager.gameOver = false;
         LifeManager.lives = 3;
-        Enemy.enemiesAlive = 0;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("Level1");
     }
     void setMinMaxX()
     {
